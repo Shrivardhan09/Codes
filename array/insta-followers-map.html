@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  const profiles = [
+    { id: 1, name: "ArUn", city: "pUnE" },
+    { id: 2, name: "aNkIt", city: "morEna" },
+    { id: 3, name: "miteSh", city: "mUmbai" },
+    { id: 4, name: "vikAs", city: "bIhar" },
+  ];
+
+  const result = profiles.map((profile) => {
+    profile.name = profile.name.toLowerCase();
+    profile.city = profile.city.toLowerCase();
+    return profile;
+  });
+
+  console.log(result);
+</script>
+
+<script>
+  const profilesV2 = [
+    { id: 1, name: "ArUn", city: "pUnE", isFollowing: true },
+    { id: 2, name: "aNkIt", city: "morEna", isFollowing: true },
+    { id: 3, name: "miteSh", city: "mUmbai", isFollowing: false },
+    { id: 4, name: "vikAs", city: "bIhar", isFollowing: false },
+  ];
+
+  const followers = [1, 2];
+
+  const instaLikes = profilesV2.map((item) => {
+    if (item.isFollowing) {
+      item.followMessage = "Following";
+    } else {
+      item.followMessage = "Follow";
+    }
+
+    return item;
+  });
+  console.log({ instaLikes });
+</script>
+
+<script>
+    const profilesV3 = [
+      { id: 1, name: "ArUn", city: "pUnE" },
+      { id: 2, name: "aNkIt", city: "morEna" },
+      { id: 3, name: "miteSh", city: "mUmbai" },
+      { id: 4, name: "vikAs", city: "bIhar" },
+    ];
+  
+    const followers1 = [1, 2];
+  
+    // Way 1
+    const LikesV1 = profilesV3.map((profile) => {
+      const isAfollower = followers1.includes(profile.id);
+      profile.followerMessage = isAfollower ? "Following" : "Follow";
+      return profile;
+    });
+  
+    // Way 2
+    const LikesV2 = profilesV3.map((profile) => {
+      const isAfollower = followers1.some((follower) => profile.id === follower);
+      profile.followerMessage = isAfollower ? "Following" : "Follow";
+      return profile;
+    });
+  
+    console.log({ LikesV1, LikesV2 });
+  </script>

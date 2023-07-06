@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+
+<script>
+  const fruits1 = ["apple", "banana"];
+  fruits.push("orange");
+  console.log(fruits); // Output: ['apple', 'banana', 'orange']
+</script>
+
+<script>
+  const fruits2 = ["apple", "banana", "orange"];
+  const removedFruit1 = fruits.pop();
+  console.log(removedFruit1); // Output: 'orange'
+  console.log(fruits2); // Output: ['apple', 'banana']
+</script>
+
+<script>
+  const fruits3 = ["apple", "banana", "orange"];
+  const removedFruit2 = fruits.shift();
+  console.log(removedFruit2); // Output: 'apple'
+  console.log(fruits3); // Output: ['banana', 'orange']
+</script>
+
+<script>
+  const fruits4 = ["banana", "orange"];
+  fruits.unshift("apple");
+  console.log(fruits4); // Output: ['apple', 'banana', 'orange']
+</script>
+
+<script>
+  const fruits5 = ["apple", "banana"];
+  const vegetables = ["carrot", "tomato"];
+  const combined = fruits5.concat(vegetables);
+  console.log(combined); // Output: ['apple', 'banana', 'carrot', 'tomato']
+</script>
+
+<script>
+  const fruits6 = ["apple", "banana", "orange", "kiwi"];
+  const sliced = fruits6.slice(1, 3);
+  console.log(sliced); // Output: ['banana', 'orange'] it will only return the data you want.
+</script>
+
+<script>
+  const fruits7 = ["apple", "banana", "orange"];
+  fruits7.splice(1, 1, "kiwi", "grape");
+  console.log(fruits7); // Output: ['apple', 'kiwi', 'grape', 'orange'] it will return remaining values after deleted.
+</script>
+
+<script>
+  const numbers1 = [1, 2, 3];
+  numbers.forEach((numbers1) => {
+    console.log(numbers1); // Output: 1, 2, 3
+  });
+</script>
+
+<script>
+  const numbers2 = [1, 2, 3];
+  const doubled = numbers.map((numbers2) => numbers2 * 2);
+  console.log(doubled); // Output: [2, 4, 6]
+</script>
+
+<script>
+  const numbers3 = [1, 2, 3, 4, 5];
+  const evenNumbers = numbers.filter((numbers3) => numbers3 % 2 === 0);
+  console.log(evenNumbers); // Output: [2, 4]
+</script>

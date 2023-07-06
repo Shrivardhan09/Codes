@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  //how to empty the array
+  let a = [1,2,3,4,5]
+  let b = a
+  a = []
+  console.log({a,b})
+
+
+
+  let c = [1,2,3,4,5]
+  let d = c
+
+  c.splice(0,5)
+
+  console.log({c,d})
+
+  let e = [1,2,3,4,5]
+  let f = c
+
+  e.length =0
+
+  console.log({e,f})
+</script>

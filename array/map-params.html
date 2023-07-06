@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  const profiles = [
+    { id: 1, name: "ArUn", city: "pUnE" },
+    { id: 2, name: "aNkIt", city: "morEna" },
+    { id: 3, name: "miteSh", city: "mUmbai" },
+    { id: 4, name: "vikAs", city: "bIhar" },
+  ];
+
+  const result = profiles.map((profile) => {
+    profile.name = profile.name.toLowerCase();
+ 
+    profile.city = profile.city.charAt(0).toUpperCase() + profile.city.slice(1).toLowerCase();
+    return profile;
+  });
+
+  console.log(result);
+</script>

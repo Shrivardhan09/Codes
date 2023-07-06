@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  const profile = {
+    name: "Amit",
+    city: "Delhi",
+    country: "India",
+  };
+
+  const details = {
+    name: "Aman",
+    city: "Mumbai",
+  };
+
+  const mergedObj = { ...details, ...profile };
+  const mergedObj2 = { ...profile, ...details };
+
+  const newObj = {
+    name: "Vikas",
+    pin: 007,
+    ...profile,
+    ...details,
+    pin: 900,
+    name: "Rahul",
+  };
+  //console.log(mergedObj, mergedObj2);
+
+  console.log(newObj);
+
+  const profile1 = {
+    name: "Amit",
+    city: "Delhi",
+    country: "India",
+    area: {
+      address: "Saket",
+    },
+  };
+
+  const details1 = {
+    name: "Aman",
+    city: "Mumbai",
+    area: {
+      address2: "Bandra",
+    },
+  };
+
+  const newObj1 = { ...profile1, ...details1 };
+  console.log(newObj1);
+</script>

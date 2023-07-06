@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>form</title>
+    <style>
+      body {
+        margin: 0;
+        box-sizing: border-box;
+      }
+      .form {
+        background-image: url('https://wallpapercrafter.com/desktop1/561178-light-the-city-background-widescreen-mood-blur.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        /* width: 100vw; */
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        margin: 0px auto;
+      }
+      .input-div{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+      }
+      #label,
+      #placeholder,
+      .select-type-div {
+        padding: 20px;
+        background-color: rgba(0, 0, 0, 0.778);
+        color: white;
+        border: none;
+        outline: none;
+        border-radius: 4px;
+      }
+      #selectType {
+        outline: none;
+        background-color: transparent;
+        color: rgba(255, 255, 255, 0.545);
+        border: none;
+        border-radius: 4px;
+      }
+      #selectType > option {
+        color: black;
+      }
+      #add-button {
+        padding: 10px 40px;
+        background-color: rgba(255, 192, 203, 0.681);
+        color: rgba(255, 255, 255, 0.762);
+        border: none;
+        border-radius: 20px;
+      }
+      #output {
+        margin: opx 10px;
+        border: 1px solid black;
+        background-image: url('https://wallpapercrafter.com/desktop1/561178-light-the-city-background-widescreen-mood-blur.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        display: flex;
+        flex-direction: column;
+      }
+      .label-h1 {
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form">
+      <div class="input-div">
+        <div class="label-div">
+          <input type="text" name="" id="label" placeholder="label" />
+        </div>
+        <div class="placeholder-div">
+          <input type="text" id="placeholder" placeholder="placeholder" />
+        </div>
+        <div class="select-type-div">
+          <select name="select-Type" id="selectType">
+            <option value="number">Number</option>
+            <option value="radio">radio</option>
+            <option value="password">password</option>
+            <option value="checkbox">checkbox</option>
+            <option value="text">text</option>
+            <option value="date">date</option>
+            <option value="email">email</option>
+          </select>
+        </div>
+        <div class="button-div">
+          <button id="add-button">ADD</button>
+        </div>
+      </div>
+      <div class="output" id="output">
+        <!--  -->
+      </div>
+    </div>
+  </body>
+</html>
+<script>
+  const addButton = document.getElementById('add-button');
+  addButton.addEventListener('click', () => {
+    const labelInput = document.getElementById('label');
+    const labelValue = labelInput.value;
+    const placeholderI = document.getElementById('placeholder');
+    const changePlaceholder = placeholderI.placeholder;
+    const selectType = document.getElementById('selectType');
+    const selectTypeValue = selectType.value;
+
+    //creating elems
+    const outputDiv = document.getElementById('output');
+
+    const labelDiv = document.createElement('div');
+    labelDiv.className = 'output-label-div';
+    const labelH1 = document.createElement('h1');
+    labelH1.className = 'label-h1';
+    labelH1.textContent = labelValue;
+    labelDiv.appendChild(labelH1);
+
+    const inputDiv = document.createElement('div');
+    inputDiv.className = 'output-i-div';
+    const pushedField = document.createElement('input');
+    pushedField.className = 'push-field';
+    pushedField.type = selectTypeValue;
+    pushedField.placeholder = labelValue;
+    inputDiv.appendChild(pushedField);
+
+    outputDiv.appendChild(labelDiv);
+    outputDiv.appendChild(inputDiv);
+
+    labelInput.value = '';
+    placeholderI.value = '';
+    selectType.value = '';
+  });
+</script>

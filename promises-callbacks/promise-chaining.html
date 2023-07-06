@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  const p = () => {
+    return new Promise((resolve, reject) => {
+      resolve(10);
+    });
+  };
+
+  console.log("Start");
+  p()
+    .then((data) => {
+      console.log("First Then: ", data);
+      return data + 10;
+    })
+    .then((data) => {
+      console.log("Second Then: ", data);
+      return data * 2;
+    })
+    .then((data) => {
+      console.log("Third Then: ", data);
+      //return data + 2;
+    })
+    .then((data) => {
+      console.log("Final Then: ", data);
+    })
+    .catch((err) => {
+      console.log("Err: ", err);
+    });
+
+  console.log("End");
+</script>
+
+<!-- <script>
+  fetch("https://jsonplaceholder.typicode.com/postsssss")
+    .then((data) => {
+      if (data.status !== 200) {
+        throw new Error("Data not found");
+      }
+      return data.json();
+    })
+    .then((data) => {
+      console.log("Data: ", data);
+    })
+    .catch((err) => {
+      console.log("Error: ", err);
+    });
+</script> -->
+
+<script>
+  async function callAPI() {
+    try {
+      const result = await fetch("https://jsonplaceholder.typicode.com/posts");
+
+      console.log("1: ", result);
+
+      if (result.status !== 200) {
+        throw new Error("Data not found");
+      }
+
+      console.log("2: ", result);
+
+      const parsedResult = await result.json();
+
+      console.log("3: ", parsedResult);
+
+      return parsedResult;
+    } catch (err) {
+      console.log("Error: ", err);
+    }
+  }
+
+  callAPI();
+</script>
