@@ -12,16 +12,17 @@ const CartList = () => {
     const [list, setList] = useState([]);
 
     useEffect(() => {
-        // onLoadProducts();
+        onLoadProducts();
     }, []);
 
     const onLoadProducts = async () => {
-        const result = await axios.get("http://localhost:3000/cart");
+        const result = await axios.get("https://fakestoreapi.com/products");
         if (result.data) {
-            // setList(result.data);
+            setList(result.data);
             console.log(result.data)
         }
     };
+    // return null
 
     return (
         <div>
@@ -68,3 +69,6 @@ const CartList = () => {
 };
 
 export default CartList;
+
+
+

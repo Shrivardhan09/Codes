@@ -23,17 +23,17 @@ const JsonList = () => {
     }, [])
 
     const onLoadProducts = async () => {
-        const result = await axios.get("http://localhost:3000/products")
+        const result = await axios.get("https://fakestoreapi.com/products")
         if (result.data) {
             setJsonList(result.data)
         }
     }
 
     const onRemoveItem = async (productId) => {
-        const result = await axios.delete(`http://localhost:3000/cart/${productId}`)
+        const result = await axios.delete(`https://fakestoreapi.com/cart/${productId}`)
         if (!result.data) {
             toast("No product removed from the cart")
-            return;
+            // return;
         } else {
             toast.success("Product removed from the cart!", {
                 position: "top-center",
@@ -56,11 +56,11 @@ const JsonList = () => {
 
     const onAddToCart = async (productId) => {
         const payload = { productId };
-        const result = await axios.post("http://localhost:3000/cart", payload);
+        const result = await axios.post("https://fakestoreapi.com/cart", payload);
         if (!result.data) {
             // Show Error message
             toast("No product added to the cart");
-            return;
+            // return;
         }
         toast.success("Product Added to Cart!", {
             position: "top-center",
@@ -72,15 +72,18 @@ const JsonList = () => {
             progress: undefined,
             theme: "colored",
         });
-
+        setCart((prevData) => {
+            return {
+                ...prevData,
+                [productId]: !prevData[productId],
+            }
+        })
 
     }
     return (
         <>
             <Link to={"/cart"}>
-
-                Show Cart
-
+                <Button>Show Cart</Button>
             </Link>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap', gap: 15 }}>
                 {jsonList.map((prod) => {

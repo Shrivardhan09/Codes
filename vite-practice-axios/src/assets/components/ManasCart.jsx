@@ -2,9 +2,6 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 
-
-
-
 const ManasCart = () => {
     // Retrieve cart data from local storage
     const cartData = JSON.parse(localStorage.getItem("cartData"));
