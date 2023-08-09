@@ -1,31 +1,27 @@
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
-import Search from "./assets/components/routing.jsx/Search";
-import TaskDetails from "./assets/components/Context.jsx/TaskDetails";
-import FormComponent from "./assets/components/FastTrack/FixingCode";
-import { store } from './Redux/store'
+import { store } from './Cart/store'
 import { Provider } from 'react-redux'
-import { Calculator } from "./features/Calculator";
+import Products from "./Cart/products";
+import AddToCart from "./Cart/AddToCart";
+import Scrolling from "./assets/components/InfinteScrolling/Scrolling";
+// import { APIWithoutUseMemo } from "./assets/components/search/FilteringData";
 
 
-// const router = createBrowserRouter([
-//   {
-//     path: "/",
-//     element: <FormComponent />,
-//   },
-//   {
-//     path: "/:id",
-//     element: <TaskDetails />,
-//   },
-//   {
-//     path: "/search",
-//     element: <Search />,
-//   },
-// ]);
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Products />,
+  },
+  {
+    path: "/cart",
+    element: <AddToCart />,
+  },
+]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  < Provider store={store} >
-    <Calculator />
-  </Provider >
+  <Provider store={store}>
+    <RouterProvider router={router} />
+  </Provider>
 );

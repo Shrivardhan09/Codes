@@ -22,7 +22,7 @@ export const APIWithoutUseMemo = () => {
   }, []);
 
   useEffect(() => {
-    const delay = 300
+    const delay = 3000
     const debouncing = setTimeout(() => {
       const result = products.filter((item) => {
         const { title, description, category } = item;
