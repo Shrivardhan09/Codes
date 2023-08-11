@@ -16,7 +16,7 @@ const SliceCart = createSlice({
         storeCart: (state, action) => {
             const { id } = action.payload
             state.cart = [...state.cart, action.payload];
-            state.cart.push({ ...action.payload, quantity: 1, addedToCart: true }) // this.state is manuplualting the initialState.
+            // state.cart.push({ ...action.payload, quantity: 1, addedToCart: true }) // this.state is manuplualting the initialState.
             state.MarkAdded[id] = true
         },
         removeId: (state, action) => {

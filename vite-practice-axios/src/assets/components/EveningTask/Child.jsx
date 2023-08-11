@@ -12,10 +12,8 @@ const Child = ({ data }) => {
         setArr(intialArr)
     }, [a])
 
-
     const onchangeEvent = (e, index) => {
         const updatedArr = [...Arr];
-
         updatedArr[index] = parseInt(e.target.value);
         setArr(updatedArr);
 

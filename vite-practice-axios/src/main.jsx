@@ -6,22 +6,47 @@ import { Provider } from 'react-redux'
 import Products from "./Cart/products";
 import AddToCart from "./Cart/AddToCart";
 import Scrolling from "./assets/components/InfinteScrolling/Scrolling";
+import TaskJson from "./assets/components/Context.jsx/TaskJson";
+import TaskDetails from "./assets/components/Context.jsx/TaskDetails";
+import { TaskJsonProvider } from "./assets/components/Context.jsx/PassJson";
+import HomePage from "./assets/components/Context.jsx/HomePage";
+import { ThemeProvider } from "./assets/components/Context.jsx/Setup";
+import Task from "./assets/components/EveningTask/Task";
+import { MemoData } from "./assets/components/ManasCart/MemoData";
+import ParentMans from "./assets/components/ManasCart/ParentMans";
+import ChildManas from "./assets/components/ManasCart/ChildManas";
+import Todo from "./assets/components/todo/Todo";
+import ListData from "./assets/ListRender/ListData";
 // import { APIWithoutUseMemo } from "./assets/components/search/FilteringData";
 
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Products />,
+    element: <ListData />,
   },
   {
-    path: "/cart",
-    element: <AddToCart />,
+    path: "/:id",
+    element: <ChildManas />,
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <Provider store={store}>
+  // <Provider store={store}>
+  // </Provider>
+  // <TaskJsonContext>
+  //   <RouterProvider router={router} />
+  // </TaskJsonContext>
+  // <TaskJsonProvider>
+  //   <RouterProvider router={router} />
+  // </TaskJsonProvider>
+  // <ThemeProvider>
+  //   <RouterProvider router={router} />
+  // </ThemeProvider>
+  // <MemoData>
+  //   <RouterProvider router={router} />
+  // </MemoData>
+  <>
     <RouterProvider router={router} />
-  </Provider>
+  </>
 );

@@ -14,7 +14,8 @@ const AddToCart = () => {
         // cartData.map((items) => values += items.price)
         // return values;
         cartData.map((item) => {
-            return values += parseFloat(item.price * item.quantity)
+            const { price, quantity = 1 } = item
+            return values += price * quantity
         });
         return values.toFixed(2);
     }, [cartData])

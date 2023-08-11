@@ -6,12 +6,14 @@ import { TaskJsonContext } from './PassJson';
 const TaskDetails = () => {
     const [details, setDetails] = useState({});
     const { id } = useParams();
-    const holdJson = useContext(TaskJsonContext);
+    const { taskList } = useContext(TaskJsonContext);
 
     useEffect(() => {
-        const productDetails = holdJson.find(item => item.id === parseInt(id));
+        const productDetails = taskList.find(item => item.id === parseInt(id));
         setDetails(productDetails || {});
-    }, [id, holdJson]);
+    }, [id, taskList]);
+
+    console.log(id, 'id')
 
     return (
         <div>

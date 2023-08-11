@@ -1,5 +1,5 @@
 // HomePage.js
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { ThemeContext } from './Setup';
 
 const HomePage = () => {

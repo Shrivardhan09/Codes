@@ -11,7 +11,6 @@ const FunctionaC = () => {
             ...prevData,
             [name]: value
         }])
-
     }
 
     return (

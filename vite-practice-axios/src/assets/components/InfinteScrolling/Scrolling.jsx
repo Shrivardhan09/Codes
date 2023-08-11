@@ -4,11 +4,8 @@ import { useEffect, useState } from "react";
 const Scrolling = () => {
     const [store, setStore] = useState([]);
     const [page, setPage] = useState(1);
-    const [loading, setLoading] = useState(false);
 
     const fetching = async () => {
-        setLoading(true);
-
         try {
             const response = await axios.get(
                 `https://jsonplaceholder.typicode.com/posts?limit=9&_page=${page}`
@@ -20,8 +17,6 @@ const Scrolling = () => {
             }
         } catch (error) {
             console.error("Error fetching data:", error);
-        } finally {
-            setLoading(false);
         }
     };
 
@@ -30,10 +25,8 @@ const Scrolling = () => {
     }, []);
 
     const scrollDown = () => {
-
         if (
-            window.innerHeight + window.scrollY >= document.body.offsetHeight &&
-            !loading
+            window.innerHeight + window.scrollY >= document.body.offsetHeight
         ) {
             fetching();
         }
@@ -44,7 +37,7 @@ const Scrolling = () => {
         return () => {
             window.removeEventListener("scroll", scrollDown);
         };
-    }, [loading]);
+    }, []);
 
     return (
         <>
@@ -70,7 +63,6 @@ const Scrolling = () => {
                     );
                 })}
             </div>
-            {loading && <p>Loading...</p>}
         </>
     );
 };

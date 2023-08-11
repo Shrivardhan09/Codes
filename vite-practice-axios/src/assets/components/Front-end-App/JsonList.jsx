@@ -12,8 +12,6 @@ import Typography from '@mui/joy/Typography';
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
-
-
 const JsonList = () => {
     const [jsonList, setJsonList] = useState([])
     const [cart, setCart] = useState([])
