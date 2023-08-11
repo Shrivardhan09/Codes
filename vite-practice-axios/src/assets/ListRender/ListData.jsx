@@ -16,19 +16,22 @@ const ListData = () => {
                     }
                 }
             } catch (err) {
-                intialArray.forEach((item) => {
+                intialArray.map((item) => {
                     const { people } = item
-                    peopleData = [...peopleData, ...people]
+                    return peopleData = [...peopleData, ...people]
                     // console.log({ people })
                 })
-                Promise.all(peopleData.map(u => fetch(u)))
+                Promise.all(peopleData.map(u => fetch(u)))    //array fetch
                     .then(responses =>
+                        // console.log(responses)
                         Promise.all(responses.map(res => res.json()))
-                        // console.log({responses})
-                    ).then(res => NameFuntion(res))
+                    )
+                    .then(res =>
+                        NameFuntion(res)
+                    )
                 console.log(err)
             }
-            console.log({ peopleData })
+            // console.log({ peopleData })
         }
         result()
     }, [])
@@ -41,10 +44,16 @@ const ListData = () => {
         }
         setName(nameArray)
     }
-    // console.log({ name })
+    console.log({ name })
     return (
         <div>
-            {name}
+            {name.map((items, id) => {
+                return (
+                    <div key={id}>
+                        Name:  {items}
+                    </div>
+                )
+            })}
         </div>
     )
 }
