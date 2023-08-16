@@ -1,15 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
-const isMatchingCharacter = (str, char) => {
-  if (!str) return false;
-  str = str.toLowerCase();
-  char = char.toLowerCase();
-  return str.includes(char);
-};
-
-export const APIWithoutUseMemo = () => {
+export const APIWithUseMemo = () => {
   const [products, setProducts] = useState([]);
-  const [filteredProducts, setFilteredProducts] = useState([]);
   const [search, setSearch] = useState("");
 
   useEffect(() => {
@@ -17,49 +9,29 @@ export const APIWithoutUseMemo = () => {
       .then((data) => data.json())
       .then((data) => {
         setProducts(data);
-        setFilteredProducts(data);
       });
   }, []);
 
-  useEffect(() => {
-    const delay = 3000
-    const debouncing = setTimeout(() => {
-      const result = products.filter((item) => {
-        const { title, description, category } = item;
+  const searchIng = useMemo(() => {
+    if (search === '') return products;
+    const searching = products.filter((items) => {
+      const { title, description } = items
+      return (
+        title.toLowerCase().includes(search) || description.toLowerCase().includes(search)
+      )
+    })
+    return searching;
 
-        if (isMatchingCharacter(title, search)) {
-          return true;
-        }
-
-        if (isMatchingCharacter(description, search)) {
-          return true;
-        }
-
-        if (isMatchingCharacter(category, search)) {
-          return true;
-        }
-
-        return false;
-      });
-
-      setFilteredProducts(result);
-    }, delay)
-    return () => {
-      clearTimeout(debouncing);
-    };
-  }, [search, products]);
-
-  console.log("Re-render");
-
+  }, [search, products])
   return (
     <>
       <div>
-        <input value={search} onChange={(e) => setSearch(e.target.value)} />
+        <input value={search} onChange={(e) => setSearch(e.target.value.toLowerCase())} />
       </div>
       <div>
         <h1>My Products</h1>
         <ul>
-          {filteredProducts.map((item) => {
+          {searchIng.map((item) => {
             return <li key={item.id}>{item.title}</li>;
           })}
         </ul>

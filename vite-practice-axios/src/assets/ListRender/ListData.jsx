@@ -4,34 +4,50 @@ import axios from 'axios'
 const ListData = () => {
     let intialArray = []
     let peopleData = []
-    const [name, setName] = useState([])
 
+    const [name, setName] = useState([])
+    // console.log("rerender")
     useEffect(() => {
+        const t0 = performance.now();
+        //Logic
         const result = async () => {
             try {
-                for (let i = 1; ; i++) {
+                let i = 1
+                let listCompleted = false
+                while (!listCompleted) {
                     const listRes = await axios.get(`https://swapi.dev/api/species/?page=${i}`)
-                    if (listRes.data.results) {
-                        intialArray = [...intialArray, ...listRes.data.results]
+                    const { results, next } = listRes.data
+                    // console.log({ listRes })
+                    if (results) {
+                        intialArray = [...intialArray, ...results]
+                        // console.log({ intialArray })
                     }
+                    if (!next) {
+                        listCompleted = true;
+                        intialArray.map((item) => {
+                            const { people } = item
+                            return peopleData = [...peopleData, ...people]
+                            // console.log({ people })
+                        })
+                    }
+                    i++;
                 }
-            } catch (err) {
-                intialArray.map((item) => {
-                    const { people } = item
-                    return peopleData = [...peopleData, ...people]
-                    // console.log({ people })
-                })
+                //console.log({intialArray})
                 Promise.all(peopleData.map(u => fetch(u)))    //array fetch
                     .then(responses =>
-                        // console.log(responses)
+                        // //console.log(responses)
                         Promise.all(responses.map(res => res.json()))
                     )
-                    .then(res =>
+                    .then(res => {
                         NameFuntion(res)
+                        const t1 = performance.now();
+                        console.log(`Call to doSomething took ${t1 - t0} milliseconds.`);
+                    }
                     )
+            } catch (err) {
                 console.log(err)
             }
-            // console.log({ peopleData })
+            // //console.log({ peopleData })
         }
         result()
     }, [])
@@ -43,8 +59,9 @@ const ListData = () => {
             nameArray.push(name)
         }
         setName(nameArray)
+
     }
-    console.log({ name })
+    // //console.log({ name })
     return (
         <div>
             {name.map((items, id) => {

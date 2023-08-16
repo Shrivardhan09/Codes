@@ -17,13 +17,17 @@ import ParentMans from "./assets/components/ManasCart/ParentMans";
 import ChildManas from "./assets/components/ManasCart/ChildManas";
 import Todo from "./assets/components/todo/Todo";
 import ListData from "./assets/ListRender/ListData";
-// import { APIWithoutUseMemo } from "./assets/components/search/FilteringData";
+import ListData1 from "./assets/ListRender/AnkitCode";
+import { APIWithUseMemo } from "./assets/components/search/FilteringData";
+import Pagination from "./assets/components/Pagination/Pagination";
+import AlterantePagination from "./assets/components/Pagination/AlterantePagination";
+
 
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <ListData />,
+    element: <AlterantePagination />,
   },
   {
     path: "/:id",
