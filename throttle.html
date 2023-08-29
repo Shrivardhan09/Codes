@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" id="throttle" />
+    <button id="buttonThrottle">click here</button>
+  </body>
+</html>
+<script>
+  const inputBox = document.getElementById("throttle");
+  const buttonThrottle = document.getElementById("buttonThrottle");
+
+  function throttle(fn, delay) {
+    let flag = true;
+    return function (...args) {
+      if (flag) {
+        flag = false;
+        fn.apply(this, args);
+        setTimeout(() => {
+          flag = true;
+        }, delay);
+      }
+    };
+  }
+
+  const handleClick = () => {
+    console.log("clicked");
+  };
+
+  const throttleFunction = throttle(handleClick, 1000);
+  buttonThrottle.addEventListener("click", throttleFunction);
+</script>

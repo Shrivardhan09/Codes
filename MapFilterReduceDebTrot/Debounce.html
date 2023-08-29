@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Debounce</title>
+  </head>
+  <body>
+    <input type="text" onkeyup="Debounce()" />
+  </body>
+</html>
+<script>
+  const DebounceTesting =()=> console.log("data");
+  const DebouncePolyfill = (cB, delay) => {
+    let timer;
+    return function (...args) {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        cB.apply(this, args);
+      }, delay);
+    };
+  };
+  const Debounce = DebouncePolyfill(DebounceTesting, 400);
+</script>

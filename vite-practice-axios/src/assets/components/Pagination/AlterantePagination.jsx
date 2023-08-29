@@ -7,9 +7,11 @@ const AlterantePagination = () => {
     const [page, setPage] = useState(1)
     const [totalPages, setTotalPages] = useState(0)
 
+    const itemsPerPage = 10
+
     useEffect(() => {
         const fetchingList = async () => {
-            const listData = await axios.get(`https://dummyjson.com/products?limit=10&skip=${page * 10 - 10}`)
+            const listData = await axios.get(`https://dummyjson.com/products?limit=10&skip=${(page - 1) * itemsPerPage}`)
             if (listData.data && listData.data.products.length > 0) {
                 setStore(listData.data.products)
                 setTotalPages(listData.data.total / 10)
@@ -17,7 +19,7 @@ const AlterantePagination = () => {
         }
         fetchingList()
     }, [page])
-    console.log({ store })
+    // console.log({ store })
 
     const selectPage = (selectedPage) => {
         if (selectedPage >= 1 && selectedPage <= totalPages)

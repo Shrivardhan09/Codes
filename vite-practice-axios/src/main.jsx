@@ -1,56 +1,75 @@
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, useRouteError } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
-import { store } from './Cart/store'
-import { Provider } from 'react-redux'
-import Products from "./Cart/products";
-import AddToCart from "./Cart/AddToCart";
-import Scrolling from "./assets/components/InfinteScrolling/Scrolling";
-import TaskJson from "./assets/components/Context.jsx/TaskJson";
-import TaskDetails from "./assets/components/Context.jsx/TaskDetails";
-import { TaskJsonProvider } from "./assets/components/Context.jsx/PassJson";
-import HomePage from "./assets/components/Context.jsx/HomePage";
-import { ThemeProvider } from "./assets/components/Context.jsx/Setup";
-import Task from "./assets/components/EveningTask/Task";
-import { MemoData } from "./assets/components/ManasCart/MemoData";
-import ParentMans from "./assets/components/ManasCart/ParentMans";
 import ChildManas from "./assets/components/ManasCart/ChildManas";
-import Todo from "./assets/components/todo/Todo";
-import ListData from "./assets/ListRender/ListData";
-import ListData1 from "./assets/ListRender/AnkitCode";
-import { APIWithUseMemo } from "./assets/components/search/FilteringData";
-import Pagination from "./assets/components/Pagination/Pagination";
-import AlterantePagination from "./assets/components/Pagination/AlterantePagination";
+// import AlterantePagination from "./assets/components/Pagination/AlterantePagination";
+// import ErrorBoundaries from "./assets/components/ErrorBoundaries/HigherOrderC";
+// import Theme from "./assets/ContextTaskVSS/Theme";
+// import { ContextHoc } from "./assets/ContextTaskVSS/ContextHoc";
+// import { LanguageContext } from "./assets/ContextTaskVSS/LanguageContext";
+// import ParentRef from "./assets/ForwardRefVSS/ParentRef";
+import Books from "./assets/components/BooksTask";
+// import ToAndFro from "./assets/components/ToAndFro";
+import NumberAnimation from "./assets/components/ToAndFro/Alternate";
+import Alternate from "./assets/components/ToAndFro/Alternate";
+import ChatTask from "./assets/components/ChatTask/ChatTask";
 
 
+export function RootErrorBoundary() {
+  let error = useRouteError();
+  return (
+    <div>
+      <h1>Uh oh, something went terribly wrong 😩</h1>
+      <pre>{error.message || JSON.stringify(error)}</pre>
+      <button onClick={() => (window.location.href = "/")}>
+        Click here to reload the app
+      </button>
+    </div>
+  );
+}
 
+// const router = createBrowserRouter([
+//   {
+//     path: "/",
+//     element: <AlterantePagination />,
+//     errorElement: <RootErrorBoundary />
+//   },
+//   {
+//     path: "/:id",
+//     element: <ChildManas />,
+//     errorElement: <RootErrorBoundary />
+
+//   },
+// ]);
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <AlterantePagination />,
+    // element: <Books />,
+    element: <ChatTask />,
+    // element: <Alternate />,
+    errorElement: <RootErrorBoundary />
   },
   {
     path: "/:id",
     element: <ChildManas />,
+    errorElement: <RootErrorBoundary />
+
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  // <Provider store={store}>
-  // </Provider>
-  // <TaskJsonContext>
-  //   <RouterProvider router={router} />
-  // </TaskJsonContext>
-  // <TaskJsonProvider>
-  //   <RouterProvider router={router} />
-  // </TaskJsonProvider>
-  // <ThemeProvider>
-  //   <RouterProvider router={router} />
-  // </ThemeProvider>
-  // <MemoData>
-  //   <RouterProvider router={router} />
-  // </MemoData>
+
   <>
     <RouterProvider router={router} />
+    {/* <AlterantePagination /> */}
   </>
+  // <>
+  //   <LanguageContext>
+  //     <ContextHoc>
+  //       <Theme />
+
+  //     </ContextHoc>
+  //   </LanguageContext>
+  //   <ParentRef />
+  // </>
 );

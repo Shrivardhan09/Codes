@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<!-- <script>
+  let array = [
+    "https://swapi.dev/api/people/66/",
+    "https://swapi.dev/api/people/67/",
+    "https://swapi.dev/api/people/68/",
+    "https://swapi.dev/api/people/74/",
+  ];
+
+  Promise.all(array.map((res) => fetch(res)))
+    .then((d) => Promise.all(d.map((u) => u.json())))
+    .then((names) => console.log(names));
+</script> -->
+
+<script>
+  const p = new Promise((resolve, reject) => {
+    let a = true;
+    if (a) {
+      resolve("yes I am resolved");
+    }
+    reject("not resolved");
+  });
+  const q = new Promise((resolve, reject) => {
+    resolve("yes Iam 2 resolve");
+    reject("i am rejected");
+  });
+
+  p.then((d1) => {
+    q.then((d2) => console.log(d1 + d2));
+  }).catch((err) => console.log(err));
+
+  const as = async () => {
+    let a = await p;
+    let b = await q;
+    // console.log(b, "async await ");
+  };
+  console.log(as());
+</script>

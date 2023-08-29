@@ -1,4 +1,11 @@
 Interview question on object:
 Prototype
 Prototypal Inheritance - inheritance in the sense it inherit from grandparents grandparent is null > parent is Object > child is data type
-Prototype Chaining - first it searches in child if not then it searches in parent(Object) if not it shows grandparent value (null)
+Prototype Chaining - first it searches in child if not then it searches in parent(Object) if not it shows grandparent value (null)// <ThemeProvider>
+  //   <RouterProvider router={router} />
+  {/* <RouterProvider router={router} /> */ }
+  // </ThemeProvide
+   setPrice((prev) => {
+            let temp = +prev + +price
+            return temp
+        })

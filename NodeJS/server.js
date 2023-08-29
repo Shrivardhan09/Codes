@@ -318,7 +318,7 @@ app.delete("/cart/:productId", (req, res) => {
 
     res.sendStatus(200);
   } else {
-    res.status(404).json({ message: "Product not found in cart" });
+    res.status(404).json({ message: "Product not found in cart." });
   }
 });
 

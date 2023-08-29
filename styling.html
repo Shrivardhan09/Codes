@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      margin: 0px;
+    }
+    .parent {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background-color: #e3516e;
+      height: 100vh;
+    }
+    .first,
+    .second,
+    .third,
+    .fourth,
+    .fifth {
+      display: flex;
+    }
+    .first div,
+    .second div,
+    .third div,
+    .fourth div,
+    .fifth div {
+      width: 40px;
+      height: 40px;
+      background: #fade8b;
+    }
+    .first :nth-child(even),
+    .third :nth-child(even),
+    .fifth :nth-child(even) {
+      border-radius: 50%;
+      background: transparent;
+    }
+
+    .second :nth-child(odd),
+    .fourth :nth-child(odd) {
+      border-radius: 50%;
+      background: transparent;
+    }
+    .circle {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .first > .circle > div,
+    .second > .circle > div,
+    .third > .circle > div,
+    .fourth > .circle > div,
+    .fifth > .circle > div {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: #fade8b;
+    }
+  </style>
+  <body>
+    <div class="parent">
+      <div class="first">
+        <div></div>
+        <div class="circle">
+          <div></div>
+        </div>
+        <div></div>
+        <div class="circle">
+          <div></div>
+        </div>
+        <div></div>
+      </div>
+      <div class="second">
+        <div class="circle">
+          <div></div>
+        </div>
+        <div></div>
+        <div class="circle">
+          <div></div>
+        </div>
+        <div></div>
+        <div class="circle">
+          <div></div>
+        </div>
+      </div>
+      <div class="third">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="fourth">
+        <div class="circle">
+          <div></div>
+        </div>
+        <div></div>
+        <div class="circle">
+          <div></div>
+        </div>
+        <div></div>
+        <div class="circle">
+          <div></div>
+        </div>
+      </div>
+      <div class="fifth">
+        <div></div>
+        <div class="circle">
+          <div></div>
+        </div>
+        <div></div>
+        <div class="circle">
+          <div></div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+  </body>
+</html>

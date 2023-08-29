@@ -5,7 +5,8 @@ import { useEffect, useState } from "react"
 const Pagination = () => {
     const [store, setStore] = useState([])
     const [page, setPage] = useState(1)
-
+    const itemsPerPage = 10
+    const pageLength = Math.ceil(store.length / 10)
 
     useEffect(() => {
         const fetchingList = async () => {
@@ -17,7 +18,7 @@ const Pagination = () => {
     console.log({ store })
 
     const selectPage = (selectedPage) => {
-        if (selectedPage >= 1 && selectedPage <= store.length / 10)
+        if (selectedPage >= 1 && selectedPage <= pageLength)
             setPage(selectedPage)
     }
     return (
@@ -34,7 +35,7 @@ const Pagination = () => {
                     flexWrap: 'wrap',
                 }}>
                     {
-                        store.slice(page * 10 - 10, page * 10).map((items) => {
+                        store.slice((page - 1) * itemsPerPage, page * itemsPerPage).map((items) => {
                             const { images, id, title, brand, description, price } = items
                             return (
                                 <div
@@ -89,7 +90,7 @@ const Pagination = () => {
                             >
                                 ⬅️
                             </span>
-                            {[...Array(store.length / 10)].map((_, i) => (
+                            {[...Array(pageLength)].map((_, i) => (
                                 <span
                                     key={i}
                                     onClick={() => selectPage(i + 1)}

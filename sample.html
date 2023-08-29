@@ -12,6 +12,42 @@
   </style>
 
   <body>
-    <div class="multiline">This text will be on separate lines</div>
+    <div class="multiline">
+      This text will be on separate lines
+      <p class="p">
+        helo
+        <button class="button">hello</button>
+      </p>
+    </div>
   </body>
 </html>
+<script>
+  let mul = document.querySelector(".multiline");
+  let pT = document.querySelector(".p");
+  let button = document.querySelector(".button");
+
+  mul.addEventListener(
+    "click",
+    () => {
+      alert("mul");
+    },
+    true
+  );
+
+  pT.addEventListener(
+    "click",
+    () => {
+      // e.stopPropagation();
+      alert("para");
+    },
+    true
+  );
+
+  button.addEventListener(
+    "click",
+    (e) => {
+      alert("button");
+    },
+    true
+  );
+</script>

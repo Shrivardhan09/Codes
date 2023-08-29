@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>timer</title>
+  </head>
+  <body>
+    <span id="minutes"></span>
+    <button onclick="play()">Play</button>
+    <button onclick="pause()">Pause</button>
+    <button onclick="clearTimer()">Clear</button>
+  </body>
+</html>
+<!-- <script>
+  let minutesElem = document.getElementById("minutes");
+  let minutes = 0;
+  let timer;
+
+  const timerDisplay = () => {
+    const mins = Math.floor(minutes / 60);
+    const secs = minutes % 60;
+    minutesElem.textContent = `${mins} minutes ${secs} seconds `;
+  };
+
+  const play = () => {
+    timer = setInterval(() => {
+      minutes++;
+      timerDisplay();
+    }, 1000);
+  };
+
+  const pause = () => {
+    clearInterval(timer);
+  };
+
+  const clearTimer = () => {
+    clearInterval(timer);
+    minutes = 0;
+    timerDisplay();
+  };
+</script> -->
+
+<script>
+  let minutes = 0;
+  let seconds = 0;
+  let timer;
+  let minutesElem = document.getElementById("minutes");
+
+  const diplaySpan = () => {
+    const min = Math.floor(minutes);
+    const sec = seconds;
+    minutesElem.textContent = `${min}min ${sec}sec`;
+  };
+
+  const play = () => {
+    clearInterval(timer);
+    timer = setInterval(() => {
+      seconds++;
+      if (seconds >= 60) {
+        minutes += Math.floor(seconds / 60);
+        seconds %= 60;
+      }
+      diplaySpan();
+    }, 100);
+  };
+
+  const pause = () => {
+    clearInterval(timer);
+  };
+
+  const clearTimer = () => {
+    clearInterval(timer);
+    minutes = 0;
+    seconds = 0;
+    diplaySpan();
+  };
+</script>
