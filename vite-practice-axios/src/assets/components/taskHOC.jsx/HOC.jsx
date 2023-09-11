@@ -15,7 +15,5 @@ const HOC = ({ children }) => {
     return children;
 };
 
-export default HOC
-
-
+export default HOC;
 

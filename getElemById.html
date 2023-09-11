@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <div>
+        <div>
+          <div id="first" class="first-class"></div>
+        </div>
+      </div>
+      <div id="second"></div>
+    </div>
+    <div id="third"></div>
+  </body>
+</html>
+<script>
+  const getElemById = (elem) => {
+    if (!elem || typeof elem !== "string") {
+      //edge cases
+      throw new TypeError("Failed");
+    }
+
+    const searchNode = (node) => {
+      if (node.className === elem) {
+        return node;
+      }
+      for (let item of node.childNodes) {
+        const result = searchNode(item);
+        if (result) {
+          return result;
+        }
+      }
+    };
+
+    return searchNode(document.body) || "ID Not Found";
+  };
+  console.log(getElemById("first"));
+  console.log(getElemById("first-class"));
+  console.log(getElemById("third"));
+</script>
