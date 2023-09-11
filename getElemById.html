@@ -25,10 +25,10 @@
     }
 
     const searchNode = (node) => {
-        //getElementByclassName
-    //   if (node.clasName === elem) {
-    //     return node;
-    //   }
+      //getElementByclassName
+      //   if (node.clasName === elem) {
+      //     return node;
+      //   }
       if (node.id === elem) {
         return node;
       }
@@ -43,6 +43,29 @@
     return searchNode(document.body) || "ID Not Found";
   };
   console.log(getElemById("first"));
-  console.log(getElemById("first-class")); //class
   console.log(getElemById("third"));
+</script>
+<script>
+  const getElemByClass = (elem) => {
+    if (!elem || typeof elem !== "string") {
+      //edge cases
+      throw new TypeError("Failed");
+    }
+
+    const searchNode = (node) => {
+      //getElementByclassName
+      if (node.clasName === elem) {
+        return node;
+      }
+      for (let item of node.childNodes) {
+        const result = searchNode(item);
+        if (result) {
+          return result;
+        }
+      }
+    };
+
+    return searchNode(document.body) || "ID Not Found";
+  };
+  console.log(getElemById("first-class")); //class
 </script>
