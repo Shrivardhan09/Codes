@@ -26,7 +26,7 @@
 
     const searchNode = (node) => {
       //getElementByclassName
-      //   if (node.clasName === elem) {
+      //   if (node.className === elem) {
       //     return node;
       //   }
       if (node.id === elem) {
@@ -54,7 +54,7 @@
 
     const searchNode = (node) => {
       //getElementByclassName
-      if (node.clasName === elem) {
+      if (node.className === elem) {
         return node;
       }
       for (let item of node.childNodes) {
@@ -67,5 +67,5 @@
 
     return searchNode(document.body) || "ID Not Found";
   };
-  console.log(getElemById("first-class")); //class
+  console.log(getElemByClass("first-class")); //class
 </script>
