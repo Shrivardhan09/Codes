@@ -13,6 +13,9 @@ import Books from "./assets/components/BooksTask";
 import NumberAnimation from "./assets/components/ToAndFro/Alternate";
 import Alternate from "./assets/components/ToAndFro/Alternate";
 import ChatTask from "./assets/components/ChatTask/ChatTask";
+import TodoEveningTask from "./assets/components/ManasTask";
+import Optimise from "./assets/components/ManasTask/Optimise";
+import ImageBW from "./assets/components/Iamge";
 
 
 export function RootErrorBoundary() {
@@ -45,7 +48,10 @@ const router = createBrowserRouter([
   {
     path: "/",
     // element: <Books />,
-    element: <ChatTask />,
+    // element: <ChatTask />,
+    // element: <TodoEveningTask />,
+    element: <ImageBW />,
+    // element: <Optimise />,
     // element: <Alternate />,
     errorElement: <RootErrorBoundary />
   },
