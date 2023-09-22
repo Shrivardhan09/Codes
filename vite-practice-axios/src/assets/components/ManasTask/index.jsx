@@ -35,7 +35,6 @@ const TodoEveningTask = () => {
     }
 
 
-
     // edit functionality
     const onEdit = (i) => {
         setUpdateStore((prev) => prev.map((items, index) =>

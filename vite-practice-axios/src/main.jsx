@@ -16,6 +16,8 @@ import ChatTask from "./assets/components/ChatTask/ChatTask";
 import TodoEveningTask from "./assets/components/ManasTask";
 import Optimise from "./assets/components/ManasTask/Optimise";
 import ImageBW from "./assets/components/Iamge";
+import TodoManas from "./assets/components/TodoList/TodoManas";
+import ParentTable from "./assets/components/Table/ParentTable";
 
 
 export function RootErrorBoundary() {
@@ -50,7 +52,8 @@ const router = createBrowserRouter([
     // element: <Books />,
     // element: <ChatTask />,
     // element: <TodoEveningTask />,
-    element: <ImageBW />,
+    // element: <ImageBW />,
+    element: <ParentTable />,
     // element: <Optimise />,
     // element: <Alternate />,
     errorElement: <RootErrorBoundary />
